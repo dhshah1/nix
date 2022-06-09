@@ -214,7 +214,7 @@ macro_rules! sockopt_impl {
  */
 
 cfg_if! {
-    if #[cfg(target_os = "linux")] {
+    if #[cfg(any(target_os = "android", target_os = "linux"))] {
         sockopt_impl!(Both, IpRecvErr, libc::SOL_IP, libc::IP_RECVERR, bool);
         sockopt_impl!(Both, IpRecvTtl, libc::SOL_IP, libc::IP_RECVTTL, bool);
         sockopt_impl!(Both, IpMtuDiscover, libc::SOL_IP, libc::IP_MTU_DISCOVER, bool);
